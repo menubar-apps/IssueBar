@@ -13,6 +13,7 @@ public class GitHubClient {
     
     @Default(.githubUsername) var githubUsername
     @Default(.githubToken) var githubToken
+    @Default(.issueType) var issueType
     
     func getMyIssues(completion:@escaping (([Edge]) -> Void)) -> Void {
         
@@ -25,9 +26,16 @@ public class GitHubClient {
             .accept("application/json")
         ]
         
+        let queryFilter = { () -> String in
+            switch issueType {
+            case .created: return "author"
+            case .assigned: return "assignee"
+            }
+        }()
+        
         let graphQlQuery = """
         {
-          search(query: "is:open is:issue assignee:@me", type: ISSUE, first: 30) {
+          search(query: "is:open is:issue \(queryFilter):@me", type: ISSUE, first: 30) {
             issueCount
             edges {
               node {

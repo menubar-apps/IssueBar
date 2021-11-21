@@ -13,6 +13,7 @@ struct PreferencesView: View {
     @Default(.githubUsername) var githubUsername
     @Default(.githubToken) var githubToken
     @Default(.showLabels) var showLabels
+    @Default(.issueType) var issueType
     @Default(.refreshRate) var refreshRate
     
     var body: some View {
@@ -32,6 +33,16 @@ struct PreferencesView: View {
                         .frame(width: 340)
                 }
                 Divider()
+                HStack{
+                    Text("Show Issues:").frame(width: 120, alignment: .trailing)
+                    Picker("", selection: $issueType) {
+                        ForEach(IssueType.allCases, id: \.self) { value in
+                            Text(value.rawValue).tag(value)
+                        }
+                    }.labelsHidden()
+                        .pickerStyle(MenuPickerStyle())
+                        .frame(width: 100)
+                }
                 HStack(alignment: .center) {
                     Text("Refresh Rate:").frame(width: 120, alignment: .trailing)
                     Picker("", selection: $refreshRate, content: {
