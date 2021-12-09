@@ -54,11 +54,6 @@ public class GitHubClient {
                   }
                   comments(last: 5) {
                       totalCount
-                      edges {
-                        node {
-                            body
-                        }
-                    }
                   }
                   repository {
                       name
@@ -95,7 +90,7 @@ public class GitHubClient {
             .contentType("application/json"),
             .accept("application/json")
         ]
-        AF.request("https://api.github.com/repos/lightspeed-hospitality/FleetBar/releases/latest",
+        AF.request("https://api.github.com/repos/menubar-apps-for-devs/IssueBar/releases/latest",
                    method: .get,
                    encoding: JSONEncoding.default,
                    headers: headers)

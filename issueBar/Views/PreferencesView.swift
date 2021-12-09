@@ -19,49 +19,48 @@ struct PreferencesView: View {
     var body: some View {
         Form {
             Section {
-                HStack(alignment: .center) {
+                HStack {
                     Text("GitHub Username:").frame(width: 120, alignment: .trailing)
                     TextField("", text: $githubUsername)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 340)
+                        .frame(width: 200)
                 }
                 
-                HStack(alignment: .center) {
+                HStack {
                     Text("GitHub token:").frame(width: 120, alignment: .trailing)
-                    SecureField("ghp...", text: $githubToken)
+                    SecureField("", text: $githubToken)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 340)
+                        .frame(width: 360)
                 }
-                Divider()
-                HStack{
+            }
+            Section{
+                HStack {
                     Text("Show Issues:").frame(width: 120, alignment: .trailing)
                     Picker("", selection: $issueType) {
                         ForEach(IssueType.allCases, id: \.self) { value in
                             Text(value.rawValue).tag(value)
                         }
-                    }.labelsHidden()
-                        .pickerStyle(MenuPickerStyle())
-                        .frame(width: 100)
+                    }.pickerStyle(MenuPickerStyle())
+                     .frame(width: 120)
                 }
-                HStack(alignment: .center) {
+                HStack {
                     Text("Refresh Rate:").frame(width: 120, alignment: .trailing)
-                    Picker("", selection: $refreshRate, content: {
+                    Picker("", selection: $refreshRate) {
                         Text("1 minute").tag(1)
                         Text("5 minutes").tag(5)
                         Text("10 minutes").tag(10)
                         Text("15 minutes").tag(15)
                         Text("30 minutes").tag(30)
-                    }).labelsHidden()
-                        .pickerStyle(MenuPickerStyle())
-                        .frame(width: 100)
+                    }.pickerStyle(MenuPickerStyle())
+                     .frame(width: 120)
                 }
-                HStack{
-                    Text("Show Labels:").frame(width: 120, alignment: .trailing)
-                    Toggle("", isOn: $showLabels).labelsHidden()
+                HStack {
+                    Toggle(isOn: $showLabels) {
+                        Text("Show Labels")
+                    }
                 }
             }
         }
         .padding()
-        .frame(width: 500)
     }
 }

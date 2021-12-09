@@ -9,11 +9,28 @@ import Foundation
 import SwiftUI
 
 extension NSMutableAttributedString {
+
+    @discardableResult
+    func appendNewLine() -> NSMutableAttributedString {
+        self.append(NSMutableAttributedString(string: "\n"))
+        
+        return self
+    }
+
+    @discardableResult
+    func appendString(string: String) -> NSMutableAttributedString {
+        self.append(NSMutableAttributedString(string: string))
+        
+        return self
+    }
     
-    func appendString(string: String, color: String) -> Void {
+    @discardableResult
+    func appendString(string: String, color: String) -> NSMutableAttributedString {
         var attributes = [NSAttributedString.Key: AnyObject]()
         attributes[.foregroundColor] = hexStringToUIColor(hex: color)
         self.append(NSMutableAttributedString(string: string, attributes: attributes))
+        
+        return self
     }
 }
 

@@ -48,8 +48,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         RunLoop.main.add(timer!, forMode: .common)
         NSApp.setActivationPolicy(.accessory)
         
-                
-        // Insert code here to initialize your application
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -86,11 +84,14 @@ extension AppDelegate {
                 for issue in issuess {
                     let issueItem = NSMenuItem(title: "", action: #selector(self.openLink), keyEquivalent: "")
                     let issueItemTitle = NSMutableAttributedString(string: issue.node.title)
-                    issueItemTitle.appendString(string: "\n#" + String(issue.node.number) + " opened " + issue.node.createdAt.getElapsedInterval() + " ago", color: "#888888")
+                        .appendString(string: " #" + String(issue.node.number), color: "#888888")
+                        .appendNewLine()
+                        .appendString(string: "opened " + issue.node.createdAt.getElapsedInterval() + " ago", color: "#888888")
                     
-                    if self.showLabels {
+                    if self.showLabels && !issue.node.labels.nodes.isEmpty {
+                        issueItemTitle.appendString(string: "\n")
                         for label in issue.node.labels.nodes {
-                            issueItemTitle.appendString(string: "   " + label.name, color: "#" + label.color)
+                            issueItemTitle.appendString(string: label.name + "   ", color: "#" + label.color)
                         }
                     }
                     
