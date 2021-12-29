@@ -1,10 +1,3 @@
-//
-//  DefaultsExtensions.swift
-//  issueBar
-//
-//  Created by Pavel Makhov on 2021-11-10.
-//
-
 import Foundation
 import Defaults
 

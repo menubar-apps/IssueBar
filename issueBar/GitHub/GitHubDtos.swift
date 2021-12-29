@@ -1,19 +1,4 @@
-//
-//  GitHubDtos.swift
-//  issueBar
-//
-//  Created by Pavel Makhov on 2021-11-10.
-//
-
 import Foundation
-
-//{
-//    "data": {
-//        "search": {
-//            "issueCount": 9,
-//            "edges": [
-//                {
-//                    "node": {
 
 struct GraphQlSearchResp: Codable {
     var data: Data

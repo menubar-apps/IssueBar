@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		769F4E7F277D0FB800594911 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F4E7E277D0FB800594911 /* StringExtensions.swift */; };
 		8C5544492749DC2F0079CA42 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5544482749DC2F0079CA42 /* AboutView.swift */; };
 		8C6B9FB1273B652800C38812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B9FB0273B652800C38812 /* AppDelegate.swift */; };
 		8C6B9FB5273B652A00C38812 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C6B9FB4273B652A00C38812 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		769F4E7E277D0FB800594911 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		8C5544482749DC2F0079CA42 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8C6B9FAD273B652800C38812 /* issueBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = issueBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6B9FB0273B652800C38812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				8C6B9FC8273BFA5200C38812 /* DefaultsExtensions.swift */,
 				8CECBBA52741A3BC00A2802D /* NSMutableAttributedStringExtension.swift */,
 				8CECBBA72741A44F00A2802D /* DateExtension.swift */,
+				769F4E7E277D0FB800594911 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				8C5544492749DC2F0079CA42 /* AboutView.swift in Sources */,
 				8CECBBAE2741B04800A2802D /* PreferencesView.swift in Sources */,
 				8C6B9FCB273BFDF000C38812 /* GitHubDtos.swift in Sources */,
+				769F4E7F277D0FB800594911 /* StringExtensions.swift in Sources */,
 				8CECBBA82741A44F00A2802D /* DateExtension.swift in Sources */,
 				8C6B9FB1273B652800C38812 /* AppDelegate.swift in Sources */,
 				8CECBBA62741A3BC00A2802D /* NSMutableAttributedStringExtension.swift in Sources */,
@@ -331,6 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = issueBar/issueBar.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -358,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = issueBar/issueBar.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

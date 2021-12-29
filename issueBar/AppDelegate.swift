@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  issueBar
-//
-//  Created by Pavel Makhov on 2021-11-09.
-//
-
 import Cocoa
 import Defaults
 import SwiftUI
@@ -83,7 +76,7 @@ extension AppDelegate {
 
                 for issue in issuess {
                     let issueItem = NSMenuItem(title: "", action: #selector(self.openLink), keyEquivalent: "")
-                    let issueItemTitle = NSMutableAttributedString(string: issue.node.title)
+                    let issueItemTitle = NSMutableAttributedString(string: issue.node.title.trunc(length: 50))
                         .appendString(string: " #" + String(issue.node.number), color: "#888888")
                         .appendNewLine()
                         .appendString(string: "opened " + issue.node.createdAt.getElapsedInterval() + " ago", color: "#888888")
@@ -96,6 +89,7 @@ extension AppDelegate {
                     }
                     
                     issueItem.attributedTitle = issueItemTitle
+                    issueItem.toolTip = issue.node.title
                     issueItem.representedObject = issue.node.url
                     self.menu.addItem(issueItem)
                 }
@@ -156,6 +150,7 @@ extension AppDelegate {
         aboutWindow.makeKeyAndOrderFront(nil)
         // allow the preference window can be focused automatically when opened
         NSApplication.shared.activate(ignoringOtherApps: true)
+        aboutWindow.styleMask.remove(.resizable)
         
         let controller = NSWindowController(window: aboutWindow)
         controller.showWindow(self)
@@ -168,11 +163,13 @@ extension AppDelegate {
     func checkForUpdates(_: NSStatusBarButton?) {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         ghClient.getLatestRelease { latestRelease in
-            let versionComparison = currentVersion.compare(latestRelease.name.replacingOccurrences(of: "v", with: ""), options: .numeric)
-            if versionComparison == .orderedAscending {
-                self.downloadNewVersionDialog(link: latestRelease.assets[0].browserDownloadUrl)
-            } else {
-                self.dialogWithText(text: "You have the latest version installed!")
+            if let latestRelease = latestRelease {
+                let versionComparison = currentVersion.compare(latestRelease.name.replacingOccurrences(of: "v", with: ""), options: .numeric)
+                if versionComparison == .orderedAscending {
+                    self.downloadNewVersionDialog(link: latestRelease.assets[0].browserDownloadUrl)
+                } else {
+                    self.dialogWithText(text: "You have the latest version installed!")
+                }
             }
         }
     }

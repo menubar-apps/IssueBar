@@ -1,10 +1,3 @@
-//
-//  DateExtension.swift
-//  issueBar
-//
-//  Created by Pavel Makhov on 2021-11-14.
-//
-
 import Foundation
 
 extension Date {

@@ -1,10 +1,3 @@
-//
-//  AboutView.swift
-//  issueBar
-//
-//  Created by Pavel Makhov on 2021-11-20.
-//
-
 import SwiftUI
 
 struct AboutView: View {
@@ -14,9 +7,10 @@ struct AboutView: View {
         VStack {
             Image(nsImage: NSImage(named: "AppIcon")!)
             Text("IssueBar").font(.title)
-            Text("Version " + currentVersion).font(.footnote)
+            Text("by Pavel Makhov").font(.caption)
+            Text("version " + currentVersion).font(.footnote)
             Divider()
-            Link("GitHub Repo", destination: URL(string: "https://github.com/menubar-apps-for-devs/IssueBar")!)
+            Link("IssueBar on GitHub", destination: URL(string: "https://github.com/menubar-apps/IssueBar")!)
         }.padding()
     }
 }
